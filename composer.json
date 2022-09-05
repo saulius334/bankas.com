@@ -1,0 +1,16 @@
+{
+    "name": "saulius/bank2",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "saulius334",
+            "email": "105633620+saulius334@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
