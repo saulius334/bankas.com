@@ -6,18 +6,8 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit7da5707b7097288dd2fc1d4d89fc0293
 {
-    public static $prefixLengthsPsr4 = array (
-        'S' => 
-        array (
-            'Saulius\\Bank2\\' => 14,
-        ),
-    );
-
-    public static $prefixDirsPsr4 = array (
-        'Saulius\\Bank2\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
-        ),
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/../..' . '/',
     );
 
     public static $classMap = array (
@@ -27,8 +17,7 @@ class ComposerStaticInit7da5707b7097288dd2fc1d4d89fc0293
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit7da5707b7097288dd2fc1d4d89fc0293::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit7da5707b7097288dd2fc1d4d89fc0293::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInit7da5707b7097288dd2fc1d4d89fc0293::$fallbackDirsPsr4;
             $loader->classMap = ComposerStaticInit7da5707b7097288dd2fc1d4d89fc0293::$classMap;
 
         }, null, ClassLoader::class);

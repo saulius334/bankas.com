@@ -13,9 +13,13 @@ class App {
         $url = explode('/', $url);
         array_shift($url);
         $method = $_SERVER['REQUEST_METHOD'];
-        
+
         if ($method == 'GET' && count($url) == 1 && $url[0] == '') {
             return ((new HomeCon)->home());
         }
+    }
+    static public function view($name, $data = []) {
+        extract($data);
+        require DIR . 'Resources/view/' . $name . '.php';
     }
 }
