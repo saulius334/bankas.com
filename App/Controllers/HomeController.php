@@ -10,4 +10,18 @@ class HomeController {
         $title = 'Home';
         return App::view('home', ['title' => $title]);
     }
+    public function register() {
+        $title = 'Register new User';
+        return App::view('user_create', ['title' => $title]);
+    }
+    public function doRegister() {
+        Json::connect()->doRegister([
+            'email' => $_POST['email'],
+            'name' => $_POST['name'],
+            'lastname' => $_POST['lastname'],
+            'asmenskodas' => $_POST['asmenskodas'],
+            'member' => isset($_POST['member']) ? 1 : 0
+        ]);
+        return App::redirect('');
+    }
 }

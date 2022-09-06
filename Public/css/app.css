@@ -10850,7 +10850,13 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-h1, .h1 {
+body {
+  margin: 0;
+  box-sizing: border-box;
+  background-color: lightblue;
+}
+
+.homeh1 {
   color: crimson;
   font-size: 50px;
 }

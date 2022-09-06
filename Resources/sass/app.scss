@@ -1,5 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
-h1 {
+body {
+    margin: 0;
+    box-sizing: border-box;
+    background-color: lightblue;
+}
+.homeh1 {
     color: crimson;
     font-size: 50px;
 }
