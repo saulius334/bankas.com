@@ -13,7 +13,7 @@ class LoginController {
         return App::view('login', ['title' => $title]);
     }
     public function doLogin() {
-        $users = Json::connect('users')->showAll();
+        $users = Json::connect('user')->showAll();
         foreach ($users as $user) {
             if($user['email'] == $_POST['email']) {
                 if ($user['password'] == $_POST['password']) {
