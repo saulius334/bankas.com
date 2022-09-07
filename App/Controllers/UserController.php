@@ -19,9 +19,9 @@ class UserController {
         Json::connect()->create([
             'name' => $_POST['name'],
             'lastname' => $_POST['lastname'],
-            'identification number' => $_POST['IDnumber'],
-            'IBAN' => IBANgenerator::IBAN_generator(),
-            'member' => isset($_POST['member']) ? 1 : 0
+            'identificationnumber' => $_POST['IDnumber'],
+            // 'IBAN' => IBANgenerator::IBAN_generator(),
+            'VIP' => isset($_POST['VIP']) ? 1 : 0
         ]);
         return App::redirect('main');
     }

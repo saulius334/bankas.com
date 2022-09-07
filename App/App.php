@@ -54,10 +54,10 @@ class App {
         //login end
 
         //new client
-        if ($method == 'GET' && count($url) == 2 && $url[0] == 'user' && $url[1] == 'create') { // try to create new user
+        if ($method == 'GET' && count($url) == 2 && $url[0] == 'user' && $url[1] == 'create') { // go to new client page
             return ((new UserCon)->createpage());
         }
-        if ($method == 'POST' && count($url) == 2 && $url[0] == 'user' && $url[1] == 'create') { // try to create new user
+        if ($method == 'POST' && count($url) == 2 && $url[0] == 'user' && $url[1] == 'store') { // try to create new user
             return ((new UserCon)->store());
         }
 
@@ -73,9 +73,9 @@ class App {
         extract($data);
         require DIR . 'Resources/view/' . $name . '.php';
     }
-    static public function redirect($where = '') {
+    static public function redirect($where) {
         if (Auth::isLogged()) {
-            header('Location: ' . URL . $where);
+            return header('Location: ' . URL . $where);
         }
         return self::redirect('');
     }
