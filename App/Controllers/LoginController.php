@@ -18,7 +18,7 @@ class LoginController {
             if($user['email'] == $_POST['email']) {
                 if ($user['password'] == $_POST['password']) {
                     $_SESSION['login'] = 1;
-                    $_SESSION['user'] = $user;
+                    $_SESSION['player'] = $user;
                     //Messages::
                     return App::redirect('');
                 }
@@ -27,8 +27,8 @@ class LoginController {
         return App::redirect('login');
     }
     public function logout() {
-        unset($_SESSION['login'], $_SESION['user']);
+        unset($_SESSION['login'], $_SESION['player']);
         //Messages::
-        return App::redirect('');
+        return header('Location: http://bankas.com');
     }
 }

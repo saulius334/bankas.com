@@ -14,11 +14,6 @@ if (App\Middleware\Auth::isLogged()) : ?>
                         <a class="nav-link" href="<?= URL ?>user/create">New User</a>
                     </li>
                     <li class="nav-item">
-                        <div class="user-nav">
-                        <div class="name"><?= $_SESSION['player']['name'] ?></div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
                     <div class="user-nav">
                     <div class="name">Logged in as <?= $_SESSION['player']['name'] ?></div>
                     <form action="<?= URL ?>logout" method="POST">

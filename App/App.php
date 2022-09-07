@@ -36,10 +36,16 @@ class App {
 
         //login 
         if ($method == 'GET' && count($url) == 1 && $url[0] == 'login') { // go to login page
+            if (Auth::isLogged()) {
+                return self::redirect('home');
+            }
             return ((new loginCon)->login());
         }
         if ($method == 'POST' && count($url) == 1 && $url[0] == 'login') { // try to log in
             return ((new loginCon)->doLogin());
+        }
+        if($method == 'POST' && count($url) == 1 && $url[0] == 'logout') {
+            return((new loginCon)->logout());
         }
         
         //login end
@@ -60,7 +66,10 @@ class App {
         extract($data);
         require DIR . 'Resources/view/' . $name . '.php';
     }
-    static public function redirect($where) {
-        header('Location: ' . URL . $where);
+    static public function redirect($where = '') {
+        if (Auth::isLogged()) {
+            header('Location: ' . URL . $where);
+        }
+        return self::redirect('');
     }
 }
