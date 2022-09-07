@@ -5,8 +5,13 @@ namespace App\Controllers;
 use App\App;
 use App\DB\Json;
 use App\Services\Messages;
+use App\Services\IBANgenerator;
 
 class UserController {
+    public function createpage() {
+        $title = 'New Client';
+        return App::view('user_create', ['title' => $title]);
+    }
     public function create() {
         return App::view('client_create', ['title' => 'New Client']);
     }
@@ -14,10 +19,11 @@ class UserController {
         Json::connect()->create([
             'name' => $_POST['name'],
             'lastname' => $_POST['lastname'],
-            'password' => $_POST['password'],
+            'identification number' => $_POST['IDnumber'],
+            'IBAN' => IBANgenerator::IBAN_generator(),
             'member' => isset($_POST['member']) ? 1 : 0
         ]);
-        return App::redirect('');
+        return App::redirect('main');
     }
     public function list() {
         return App::view('user_list', [

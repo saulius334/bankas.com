@@ -20,7 +20,7 @@ class LoginController {
                     $_SESSION['login'] = 1;
                     $_SESSION['player'] = $user;
                     //Messages::
-                    return App::redirect('');
+                    return App::view('main');
                 }
             }
         }

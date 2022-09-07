@@ -6,8 +6,7 @@ use App\DB\Json;
 
 class HomeController {
     public function home() {
-        
-        $title = 'Home';
+        $title = 'Welcome';
         return App::view('home', ['title' => $title]);
     }
     public function register() {
@@ -23,5 +22,9 @@ class HomeController {
             'member' => isset($_POST['member']) ? 1 : 0
         ]);
         return App::redirect('');
+    }
+    public function main() {
+        $title = 'Main';
+        return App::view('main', ['title' => $title]);
     }
 }

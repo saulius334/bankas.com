@@ -21,6 +21,9 @@ class App {
         if ($method == 'GET' && count($url) == 1 && $url[0] == '') { // go to home page
             return ((new HomeCon)->home());
         }
+        if ($method == 'GET' && count($url) == 1 && $url[0] == 'main') { // go to home page
+            return ((new HomeCon)->main());
+        }
         // register user
         if ($method == 'GET' && count($url) == 1 && $url[0] == 'register') { // can't access register through http
             return ((new HomeCon)->register());
@@ -37,7 +40,7 @@ class App {
         //login 
         if ($method == 'GET' && count($url) == 1 && $url[0] == 'login') { // go to login page
             if (Auth::isLogged()) {
-                return self::redirect('home');
+                return self::redirect('main');
             }
             return ((new loginCon)->login());
         }
@@ -50,10 +53,14 @@ class App {
         
         //login end
 
-        //client register
-        // if ($method == 'POST' && count($url) == 1 && $url[0] == 'register') { // try to register new user
-        //     return ((new userCon)->store());
-        // }
+        //new client
+        if ($method == 'GET' && count($url) == 2 && $url[0] == 'user' && $url[1] == 'create') { // try to create new user
+            return ((new UserCon)->createpage());
+        }
+        if ($method == 'POST' && count($url) == 2 && $url[0] == 'user' && $url[1] == 'create') { // try to create new user
+            return ((new UserCon)->store());
+        }
+
         //client register end
     }
 

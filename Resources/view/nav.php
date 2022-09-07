@@ -5,7 +5,7 @@ if (App\Middleware\Auth::isLogged()) : ?>
         <div class="col-12">
             <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= URL ?>">HOME</a>
+                        <a class="nav-link" href="<?= URL ?>main">HOME</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= URL ?>list">Users</a>
