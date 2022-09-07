@@ -15,11 +15,11 @@ class HomeController {
         return App::view('user_create', ['title' => $title]);
     }
     public function doRegister() {
-        Json::connect()->doRegister([
+        Json::connect('user')->create([
             'email' => $_POST['email'],
             'name' => $_POST['name'],
             'lastname' => $_POST['lastname'],
-            'asmenskodas' => $_POST['asmenskodas'],
+            'password' => $_POST['password'],
             'member' => isset($_POST['member']) ? 1 : 0
         ]);
         return App::redirect('');

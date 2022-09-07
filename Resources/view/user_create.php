@@ -9,7 +9,7 @@ App\App::view('top', ['title' => $title]);
                 Register New User
             </div>
             <div class="card-body">
-             <form action=" <?= URL ?>user/store" method="POST">
+             <form action=" <?= URL ?>register" method="POST">
                 <div class="form-group">
                     <label>Email</label>
                     <input type="email" class="form-control" name="email"/>
@@ -23,12 +23,10 @@ App\App::view('top', ['title' => $title]);
                 <div class="form-group">
                     <label>Last Name</label>
                     <input type="text" class="form-control" name="lastname"/>
-                    <small class="form-text text-muted">User name</small>
                 </div>
                 <div class="form-group">
-                    <label>Asmens Kodas</label>
-                    <input type="text" class="form-control" name="asmenskodas"/>
-                    <small class="form-text text-muted">User name</small>
+                    <label>Password</label>
+                    <input type="text" class="form-control" name="password"/>
                 </div>
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" name="member"/>

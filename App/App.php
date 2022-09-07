@@ -4,6 +4,7 @@ namespace App;
 
 use App\Controllers\HomeController as HomeCon;
 use App\Controllers\LoginController as loginCon;
+use App\Controllers\UserController as userCon;
 use App\Middleware\Auth;
 
 class App {
@@ -21,16 +22,17 @@ class App {
             return ((new HomeCon)->home());
         }
         // register user
-        if ($method == 'GET' && count($url) == 1 && $url[0] == 'register') { // go to register page
+        if ($method == 'GET' && count($url) == 1 && $url[0] == 'register') { // can't access register through http
             return ((new HomeCon)->register());
         }
         if ($method == 'POST' && count($url) == 1 && $url[0] == 'register') { // try to register
-            if (Auth::validate()) {
-
+            if (Auth::validateEmail()) {
+                return ((new HomeCon)->doRegister());
             }
-            return ((new HomeCon)->doRegister());
+            //Messages::
+            return self::redirect('');
         }
-
+        //register user end
 
         //login 
         if ($method == 'GET' && count($url) == 1 && $url[0] == 'login') { // go to login page
@@ -41,6 +43,12 @@ class App {
         }
         
         //login end
+
+        //client register
+        // if ($method == 'POST' && count($url) == 1 && $url[0] == 'register') { // try to register new user
+        //     return ((new userCon)->store());
+        // }
+        //client register end
     }
 
 

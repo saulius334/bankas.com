@@ -4,7 +4,37 @@ body {
     box-sizing: border-box;
     background-color: lightblue;
 }
+.container-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .homeh1 {
+    text-align: center;
     color: crimson;
     font-size: 50px;
+    margin-top: 200px;
 }
+.nav-link {
+    margin: 20px;
+    list-style: none;
+}
+.container-home.home-links {
+display: flex;
+flex-direction: row;
+width: 80%;
+}
+.container-home.home-links > a {
+    width: 40%;
+    text-align: center;
+    text-decoration: none;
+    padding: 20px 15px;
+    border-radius: 5px;
+    margin: 20px;
+    background-color: crimson;
+    color: white;
+    }
+    .container.home-links > a:hover {
+        background-color: rgb(160, 10, 30);
+    }

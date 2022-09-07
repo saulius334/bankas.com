@@ -18,12 +18,17 @@ if (App\Middleware\Auth::isLogged()) : ?>
                         <div class="name"><?= $_SESSION['player']['name'] ?></div>
                         </div>
                     </li>
+                    <li class="nav-item">
+                    <div class="user-nav">
+                    <div class="name">Logged in as <?= $_SESSION['player']['name'] ?></div>
+                    <form action="<?= URL ?>logout" method="POST">
+                        <button type="submit" class="btn btn-outline-danger m-2">Logout</button>
+                    </form>
+                    </div>
+                </li>
                     <?php else : ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= URL ?>login">Login</a>
-                        </li>
-                        
-                            <?php endif ?>
+
+                    <?php endif ?>
             </ul>
         </div>
     </div>

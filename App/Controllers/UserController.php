@@ -14,6 +14,7 @@ class UserController {
         Json::connect()->create([
             'name' => $_POST['name'],
             'lastname' => $_POST['lastname'],
+            'password' => $_POST['password'],
             'member' => isset($_POST['member']) ? 1 : 0
         ]);
         return App::redirect('');
