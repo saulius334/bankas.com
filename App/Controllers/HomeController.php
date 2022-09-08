@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\App;
 use App\DB\Json;
+use App\Services\Msg;
 
 class HomeController {
     public function home() {
@@ -19,9 +20,10 @@ class HomeController {
             'name' => $_POST['name'],
             'lastname' => $_POST['lastname'],
             'password' => $_POST['password'],
-            'member' => isset($_POST['member']) ? 1 : 0
+            'superAdmin' => isset($_POST['super']) ? 1 : 0
         ]);
-        return App::redirect('');
+        //Msg::showMsg();
+        return App::redirect('home');
     }
     public function main() {
         $title = 'Main';

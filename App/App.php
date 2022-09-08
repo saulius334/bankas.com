@@ -57,11 +57,21 @@ class App {
         if ($method == 'GET' && count($url) == 2 && $url[0] == 'user' && $url[1] == 'create') { // go to new client page
             return ((new UserCon)->createpage());
         }
-        if ($method == 'POST' && count($url) == 2 && $url[0] == 'user' && $url[1] == 'store') { // try to create new user
+        if ($method == 'POST' && count($url) == 2 && $url[0] == 'client' && $url[1] == 'store') { // try to create new user
             return ((new UserCon)->store());
         }
-
         //client register end
+        //client list + edit
+        if ($method == 'GET' && count($url) == 2 && $url[0] == 'client' && $url[1] == 'list') { // client list page
+            return ((new userCon)->list());
+        }
+        if($method == 'GET' && count($url) == 3 && $url[0] == 'client' && $url[1] == 'edit') {
+            return((new userCon)->edit($url[2]));
+        }
+        if($method == 'POST' && count($url) == 3 && $url[0] == 'client' && $url[1] == 'update') {
+            return((new userCon)->update($url[2]));
+        }
+        //client list + edit end
     }
 
 
@@ -77,6 +87,6 @@ class App {
         if (Auth::isLogged()) {
             return header('Location: ' . URL . $where);
         }
-        return self::redirect('');
+        return self::view('');
     }
 }

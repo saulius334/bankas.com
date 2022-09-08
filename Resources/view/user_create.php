@@ -9,7 +9,7 @@ App\App::view('top', ['title' => $title]);
                 New Client
             </div>
             <div class="card-body">
-             <form action=" <?= URL ?>user/store" method="POST">
+             <form action=" <?= URL ?>register" method="POST">
                 <div class="form-group">
                     <label>Name</label>
                     <input type="text" class="form-control" name="name"/>
@@ -19,18 +19,21 @@ App\App::view('top', ['title' => $title]);
                     <input type="text" class="form-control" name="lastname"/>
                 </div>
                 <div class="form-group">
-                    <label>Identification number</label>
-                    <input type="text" class="form-control" name="IDnumber"/>
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email"/>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="text" class="form-control" name="password"/>
                 </div>
                 <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" name="VIP"/>
-                    <label class="form-check-label" for="exampleCheck1" >VIP?</label>
+                    <input type="checkbox" class="form-check-input" name="super"/>
+                    <label class="form-check-label" for="exampleCheck1" >SuperAdmin?</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
              </form>
             </div>
         </div>
-        <p>Sukurus nauja klienta jam sukursime asmenine banko saskaita</p>
     </div>
   </div>
 </div>

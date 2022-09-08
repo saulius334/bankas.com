@@ -25,19 +25,28 @@ class UserController {
         ]);
         return App::redirect('main');
     }
+    public function edit(int $id) {
+        return App::view('client_edit', [
+            'title' => 'Client edit',
+            'client' => Json::connect()->show($id)
+        ]);
+    }
     public function list() {
-        return App::view('user_list', [
-            'title' => 'Users list',
-            'user' => Json::connect()->showAll()
+        return App::view('client_list', [
+            'title' => 'Clients list',
+            'client' => Json::connect()->showAll()
         ]);
     }
     public function update(int $id) {
         Json::connect()->update($id, [
+            'identificationnumber' => $_POST['identificationnumber'],
+            'email' => $_POST['email'],
             'name' => $_POST['name'],
             'lastname' => $_POST['lastname'],
-            'member' => isset($_POST['member']) ? 1 : 0
+            'VIP' => isset($_POST['VIP']) ? 1 : 0
         ]);
-        return App::redirect('');
+        print_r($_POST['identificationnumber']);
+        // return App::redirect('main');
     }
     public function delete(int $id) {
         Json::connect()->delete($id);

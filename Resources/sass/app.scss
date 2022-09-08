@@ -38,3 +38,13 @@ width: 80%;
     .container.home-links > a:hover {
         background-color: rgb(160, 10, 30);
     }
+    .client-info {
+        display: flex;
+        flex-direction: column;
+        margin: 5px;
+        div > input {
+            background-color: white;
+            outline: none;
+            border: none;
+        }
+    }
