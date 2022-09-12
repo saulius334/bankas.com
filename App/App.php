@@ -19,16 +19,25 @@ class App {
         $method = $_SERVER['REQUEST_METHOD'];
 
         if ($method == 'GET' && count($url) == 1 && $url[0] == '') { // go to home page
+            if (Auth::isLogged()) {
+                return self::redirect('main');
+            }
             return ((new HomeCon)->home());
         }
         if ($method == 'GET' && count($url) == 1 && $url[0] == 'main') { // go to home page
             return ((new HomeCon)->main());
         }
         // register user
-        if ($method == 'GET' && count($url) == 1 && $url[0] == 'register') { // can't access register through http
+        if ($method == 'GET' && count($url) == 1 && $url[0] == 'register') {
+            if (Auth::isLogged()) {
+                return self::redirect('main');
+            }
             return ((new HomeCon)->register());
         }
         if ($method == 'POST' && count($url) == 1 && $url[0] == 'register') { // try to register
+            if (Auth::isLogged()) {
+                return self::redirect('main');
+            }
             if (Auth::validateEmail()) {
                 return ((new HomeCon)->doRegister());
             }
@@ -54,8 +63,8 @@ class App {
         //login end
 
         //new client
-        if ($method == 'GET' && count($url) == 2 && $url[0] == 'user' && $url[1] == 'create') { // go to new client page
-            return ((new UserCon)->createpage());
+        if ($method == 'GET' && count($url) == 2 && $url[0] == 'client' && $url[1] == 'create') { // go to new client page
+            return ((new UserCon)->create());
         }
         if ($method == 'POST' && count($url) == 2 && $url[0] == 'client' && $url[1] == 'store') { // try to create new user
             return ((new UserCon)->store());
@@ -71,7 +80,16 @@ class App {
         if($method == 'POST' && count($url) == 3 && $url[0] == 'client' && $url[1] == 'update') {
             return((new userCon)->update($url[2]));
         }
+        if($method == 'POST' && count($url) == 3 && $url[0] == 'client' && $url[1] == 'delete') {
+            return ((new userCon)->delete($url[2]));
+        }
+        if($method == 'POST' && count($url) == 3 && $url[0] == 'add' && $url[1] == 'money') {
+            return ((new userCon)->delete($url[2]));
+        }
         //client list + edit end
+        else {
+            return App::view('404');
+        }
     }
 
 
