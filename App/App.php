@@ -83,8 +83,11 @@ class App {
         if($method == 'POST' && count($url) == 3 && $url[0] == 'client' && $url[1] == 'delete') {
             return ((new userCon)->delete($url[2]));
         }
+        if($method == 'GET' && count($url) == 3 && $url[0] == 'edit' && $url[1] == 'money') {
+            return ((new userCon)->updateMoneyPage($url[2]));
+        }
         if($method == 'POST' && count($url) == 3 && $url[0] == 'add' && $url[1] == 'money') {
-            return ((new userCon)->delete($url[2]));
+            return ((new userCon)->updateMoney($url[2]));
         }
         //client list + edit end
         else {

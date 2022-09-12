@@ -51,4 +51,24 @@ class UserController {
         Json::connect()->delete($id);
         return App::redirect('main');
     }
+    public function updateMoneyPage() {
+        $title = 'Update Money';
+        return App::view('client_add_money', [
+            'title' => $title,
+            'client' => Json::connect()->showAll()
+        ]);
+    }
+    public function updateMoney(int $id) {
+        $client = Json::connect()->show($id);
+        $maney = $client['money'] + $_POST['money'];
+        if ($maney < 0) {
+            // Messages::
+            return App::redirect('add/money/' . $id);
+            
+        } else {
+        Json::connect()->updateJustOne($id, 'money', $maney);
+        return App::redirect('client/list');
+        }
+    }
+
 }

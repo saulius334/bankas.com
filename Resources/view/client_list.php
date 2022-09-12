@@ -42,7 +42,7 @@ App\App::view('top', ['title' => $title]);
                             </div>
                             <div class="line__buttons">
                                 <a href="<?= URL . 'client/edit/' . $clientInfo['id']?>" type="button" class="btn btn-outline-success m-2">Edit</a>
-                                <a href="<?= URL . 'add/money/' . $clientInfo['id']?>" type="button" class="btn btn-outline-success m-2">Add money</a>
+                                <a href="<?= URL . 'edit/money/' . $clientInfo['id']?>" type="button" class="btn btn-outline-success m-2">Add money</a>
                                 <form action="<?= URL ?>client/delete/<?= $clientInfo['id'] ?>" method="POST">
                                 <button type="submit" class="btn btn-outline-danger m-2">Delete</button>
                                 </form>
