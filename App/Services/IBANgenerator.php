@@ -9,10 +9,10 @@ static function IBAN_generator() : string {
     $template = 'LT';
     $template2 = '000101';
     for ($i=0; $i < 10; $i++) { 
-        if ($i != 3) {
-            $template = $template . rand(0,9);
+        if ($i == 3) {
+            $template = $template . $template2;
         }
-        $template = $template . $template2;
+        $template = $template . rand(0,9);
     }
     return $template;
 } 

@@ -6,7 +6,7 @@ App\App::view('top', ['title' => $title]);
     <div class="col-5">
         <div class="card">
             <div class="card-header">
-                New Client
+                New User
             </div>
             <div class="card-body">
              <form action=" <?= URL ?>register" method="POST">
@@ -31,6 +31,7 @@ App\App::view('top', ['title' => $title]);
                     <label class="form-check-label" for="exampleCheck1" >SuperAdmin?</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="<?= URL ?>"><button type="button" class="btn btn-primary">Go back</button></a>
              </form>
             </div>
         </div>

@@ -14,7 +14,7 @@ App\App::view('top', ['title' => $title]);
                 <fieldset class="client-info">
                     <legend>Client Info</legend>
                     <div>Client Full Name: <?=$client['name'] ?> <?= $client['lastname'] ?></div>
-                    <div>Client ID: <input type="text" value="<?=$client['identificationnumber'] ?>" name="identificationnumber" disabled/></div>
+                    <div>Client ID: <?=$client['identificationnumber'] ?></div>
                     <div>Client Email: <?= $client['email'] ? $client['email'] : "Not Available" ?></div>
                     <div>VIP status: <?=$client['VIP'] ? 'Yes' : 'No' ?></div>
                 </fieldset>

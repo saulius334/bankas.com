@@ -11,18 +11,30 @@ App\App::view('top', ['title' => $title]);
             </div>
             <div class="card-body">
                 <ul class="list-group">
+                    <?php if ($client == []) : ?>
+                        <div>
+                            <p>There are no clients!</p>
+                            <a href="<?= URL ?>client/create" type="button" class="btn btn-outline-success m-2">Create new client?</a>
+                        </div>
+                        <?php else : ?>
                     <?php foreach ($client as $clientInfo) : ?>
                     <li class="list-group-item">
                         <div class="line">
                             <div class="line__content">
                                 <div class="line__content__email">
-                                    <?= $clientInfo['identificationnumber'] ?>
+                                ID : <?= $clientInfo['identificationnumber'] ?>
                                 </div>
                                 <div class="line__content__name">
-                                <?= $clientInfo['name'] ?>
+                                Name : <?= $clientInfo['name'] ?>
                                 </div>
                                 <div class="line__content__name">
-                                <?= $clientInfo['lastname'] ?>
+                                Last name : <?= $clientInfo['lastname'] ?>
+                                </div>
+                                <div class="line__content__name">
+                                Current Balance : <?= $clientInfo['money'] ?>
+                                </div>
+                                <div class="line__content__name">
+                                IBAN : <?= $clientInfo['IBAN'] ?>
                                 </div>
                                 <?php if($clientInfo['VIP']) : ?>
                                 <div class="line__content__member">VIP</div>
@@ -30,14 +42,16 @@ App\App::view('top', ['title' => $title]);
                             </div>
                             <div class="line__buttons">
                                 <a href="<?= URL . 'client/edit/' . $clientInfo['id']?>" type="button" class="btn btn-outline-success m-2">Edit</a>
+                                <a href="<?= URL . 'add/money/' . $clientInfo['id']?>" type="button" class="btn btn-outline-success m-2">Add money</a>
                                 <form action="<?= URL ?>client/delete/<?= $clientInfo['id'] ?>" method="POST">
-                                    <button type="submit" class="btn btn-outline-danger m-2">Delete</button>
+                                <button type="submit" class="btn btn-outline-danger m-2">Delete</button>
                                 </form>
                             </div>
                         </div>
                         
                     </li>
                     <?php endforeach ?>
+                    <?php endif ?>
                 </ul>
             </div>
         </div>

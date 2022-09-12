@@ -11,7 +11,7 @@ if (App\Middleware\Auth::isLogged()) : ?>
                         <a class="nav-link" href="<?= URL ?>client/list">Users</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= URL ?>user/create">New User</a>
+                        <a class="nav-link" href="<?= URL ?>client/create">New Client</a>
                     </li>
                     <li class="nav-item last">
                     <div class="user-nav">

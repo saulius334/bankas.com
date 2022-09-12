@@ -8,19 +8,17 @@ use App\Services\Messages;
 use App\Services\IBANgenerator;
 
 class UserController {
-    public function createpage() {
-        $title = 'New Client';
-        return App::view('user_create', ['title' => $title]);
-    }
     public function create() {
-        return App::view('client_create', ['title' => 'New Client']);
+        $title = 'New Client';
+        return App::view('client_create', ['title' => $title]);
     }
     public function store() {
         Json::connect()->create([
             'name' => $_POST['name'],
             'lastname' => $_POST['lastname'],
             'identificationnumber' => $_POST['IDnumber'],
-            // 'IBAN' => IBANgenerator::IBAN_generator(),
+            'money' => 0,
+            'IBAN' => IBANgenerator::IBAN_generator(),
             'VIP' => isset($_POST['VIP']) ? 1 : 0
         ]);
         return App::redirect('main');
@@ -38,18 +36,19 @@ class UserController {
         ]);
     }
     public function update(int $id) {
+        $client = Json::connect()->show($id);
         Json::connect()->update($id, [
-            'identificationnumber' => $_POST['identificationnumber'],
+            'identificationnumber' => $client['identificationnumber'],
             'email' => $_POST['email'],
             'name' => $_POST['name'],
             'lastname' => $_POST['lastname'],
             'VIP' => isset($_POST['VIP']) ? 1 : 0
         ]);
-        print_r($_POST['identificationnumber']);
-        // return App::redirect('main');
+        // print_r($_POST['identificationnumber']);
+        return App::redirect('main');
     }
     public function delete(int $id) {
         Json::connect()->delete($id);
-        return App::redirect('');
+        return App::redirect('main');
     }
 }
