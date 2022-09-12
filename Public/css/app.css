@@ -10870,9 +10870,27 @@ body {
   margin-top: 200px;
 }
 
+.nav {
+  justify-content: space-between;
+}
+
+.nav-item.last {
+  display: flex;
+}
+
 .nav-link {
   margin: 20px;
   list-style: none;
+}
+
+.user-nav {
+  display: flex;
+  align-items: center;
+  align-self: center;
+}
+
+.namebold {
+  font-weight: bold;
 }
 
 .container-home.home-links {
