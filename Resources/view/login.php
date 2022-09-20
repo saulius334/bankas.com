@@ -18,8 +18,8 @@ App\App::view('top', ['title' => $title]);
                     <label>Password</label>
                     <input type="password" class="form-control" name="password"/>
                 </div>
-                <button type="submit" class="btn btn-primary">Log in</button>
-                <a href="<?= URL ?>"><button type="button" class="btn btn-primary">Go back</button></a>
+                <button type="submit" class="btn btn-primary mt-2">Log in</button>
+                <a href="<?= URL ?>"><button type="button" class="btn btn-primary mt-2">Go back</button></a>
              </form>
             </div>
         </div>
