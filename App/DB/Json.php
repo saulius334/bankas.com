@@ -67,7 +67,7 @@ class Json implements DataBase {
         return $this->data;
     }
     public function updateJustOne(int $userId, $what, $bywhat) : void {
-        $what = "'" . $what . "'"; 
+        // $what = "'" . $what . "'"; 
         foreach ($this->data as &$value) {
             if($value['id'] == $userId) {
                 $userData['id'] = $userId;

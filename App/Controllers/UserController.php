@@ -44,18 +44,18 @@ class UserController {
             'lastname' => $_POST['lastname'],
             'VIP' => isset($_POST['VIP']) ? 1 : 0
         ]);
-        // print_r($_POST['identificationnumber']);
+
         return App::redirect('main');
     }
     public function delete(int $id) {
         Json::connect()->delete($id);
         return App::redirect('main');
     }
-    public function updateMoneyPage() {
+    public function updateMoneyPage($id) {
         $title = 'Update Money';
         return App::view('client_add_money', [
             'title' => $title,
-            'client' => Json::connect()->showAll()
+            'client' => Json::connect()->show($id)
         ]);
     }
     public function updateMoney(int $id) {

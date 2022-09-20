@@ -9,15 +9,15 @@ App\App::view('top', ['title' => $title]);
                 Receive or Withdraw money for user: <?= $client['name'] ?>
             </div>
             <div class="card-body">
-             <form action=" <?= URL ?>client/store" method="POST">
+             <form action="<?= URL . 'add/money/' . $client['id'] ?>" method="POST">
                 <div class="form-group">
                     Current Balance: <?= $client['money'] ?>
                 </div>
                 <div class="form-group">
-                    <label>Input</label>
+                    <label>How much money to add ?</label>
                     <input type="number" class="form-control" name="money"/>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary mt-2">Submit</button>
              </form>
             </div>
         </div>
